@@ -7,10 +7,14 @@
 <head>
 <title>Well 3D viewer</title>
 
-<spring:url value="/resources/core/css/hello.css" var="coreCss" />
+<!--spring:url value="/resources/core/css/hello.css" var="coreCss" /-->
 <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${coreCss}" rel="stylesheet" />
+<spring:url value="/resources/core/css/themes/default/style.min.css" var="jstreeCss" />
+<!--link href="${coreCss}" rel="stylesheet" /-->
+<link href="${bootstrapCss}" rel="stylesheet" >
+
+<link href="${jstreeCss}" rel="stylesheet" />
+
 
 <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
@@ -20,7 +24,7 @@
     }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
+    .row.content {height: 600px}
     
     /* Set gray background color and 100% height */
     .sidenav {
@@ -44,6 +48,7 @@
       }
       .row.content {height:auto;}
     }
+    
   </style>
 </head>
 <body>
@@ -61,7 +66,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/main">Home</a></li>
-        <li><a href="/well">Well</a></li>
+        <li><a href="/well/84756">Well</a></li>
         <li><a href="/hello">Hello</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
@@ -74,18 +79,10 @@
 <!----------------------------------------------------------------------------->
 <div class="container-fluid text-center">
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+    <div id="tree" class="col-sm-2 sidenav" style="overflow: auto; text-align: left; ">       
     </div>
     <div class="col-sm-8 text-left">
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
-    </div>
+    </div>  
     <div class="col-sm-2 sidenav">
       <div class="well">
         <p>ADS</p>
@@ -101,17 +98,36 @@
   <p>Footer Text</p>
 </footer>
     
-<spring:url value="/resources/core/js/hello.js" var="coreJs" />
+<!--spring:url value="/resources/core/js/hello.js" var="coreJs" /-->
 <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
 <spring:url value="/resources/core/js/jquery-3.1.1.min.js" var="jqueryJs" />
-<spring:url value="/resources/core/js/js/jstree.min.js" var="jstreeJs" />
+<spring:url value="/resources/core/js/jstree.min.js" var="jstreeJs" />
  
 <script src="${coreJs}"></script>
 <script src="${bootstrapJs}"></script>
 <script src="${jqueryJs}"></script>
 <script src="${jstreeJs}"></script>
 <script> // needed only if you do not supply JSON headers
-$('#tree').jstree({'core' : {'data' : {"url" : "./wells.json","dataType" : "json"} } });
+   
+$('#tree').jstree({
+        "core" : {
+                "multiple" : false, 
+                "data" : {
+                        "url" : "/resources/core/json/root.json",
+                        "dataType" : "json" // needed only if you do not supply JSON headers
+                },
+                "force_text" : true,
+		"check_callback" : true
+        },
+        "plugins" : [ "contextmenu" , "wholerow" ]
+});
+
+$('#tree').on("changed.jstree", function (e, data) {
+    if(data.selected.length) {
+        alert('The selected node is: ' + data.instance.get_node(data.selected[0]).id);
+    }
+});
+
 </script>
 </body>
 </html>
