@@ -5,7 +5,7 @@
 	<artifactId>spd-well-3d</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Spd Well 3D</name>
+	<name>SpdWell3D</name>
 
 	<properties>
 		<jdk.version>1.6</jdk.version>
