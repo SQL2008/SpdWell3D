@@ -1,0 +1,11 @@
+[{"id" : "1" ,  "text" : "SPD", "parent" : "#", "state" : { "opened" : true}},
+ {"id" : "101", "text" : "SVA", "parent" : "1", "state" : { "opened" : true}},
+ {"id":"102","text":"US" ,"parent":"1", "state" : { "opened" : true}},
+ {"id":"103","text":"WS" ,"parent":"1", "state" : { "opened" : true}},
+ {"id":"10101","text":"SVA-51031","parent":"101"},
+ {"id":"10102","text":"SVA-51034","parent":"101"},
+ {"id":"10103","text":"SVA-51172","parent":"101"},
+ {"id":"10201","text":"US-202","parent":"102"},
+ {"id":"10202","text":"US-216","parent":"102"},
+ {"id":"10301","text":"WS-51003","parent":"103"},
+ {"id":"10301","text":"WS-52134","parent":"103"}]

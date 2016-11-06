@@ -22,9 +22,7 @@
 	  class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 	  <property name="exceptionMappings">
 		<props>
-			<prop key="ru.htcraft.spd.well3d.controller.CustomGenericException">
-				error
-			</prop>
+			<prop key="ru.htcraft.spd.well3d.controller.CustomGenericException">error</prop>
 			<prop key="java.lang.Exception">error</prop>
 		</props>
 	  </property>

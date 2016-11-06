@@ -10,11 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloController {
-
+        //main page
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("title", "Spring 3 MVC Hello World");
-		return "hello";
+		return "main";
 	} 
         
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
